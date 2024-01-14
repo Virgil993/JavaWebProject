@@ -5,7 +5,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_DB: marketplace
+      POSTGRES_DB: delivery
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:
