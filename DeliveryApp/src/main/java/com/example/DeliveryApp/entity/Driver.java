@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,5 +27,12 @@ public class Driver {
     private Integer age;
     private String deliveryExperience;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "DRIVER_RESTAURANT",
+            joinColumns = @JoinColumn(name = "driverId"),
+            inverseJoinColumns = @JoinColumn(name="restaurantId")
+    )
+    private Set<Restaurant> restaurants = new HashSet<>();
 }
 

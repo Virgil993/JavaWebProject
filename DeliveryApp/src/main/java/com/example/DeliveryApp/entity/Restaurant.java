@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -25,4 +27,11 @@ public class Restaurant {
     private Integer rating;
     private List<String> foodTypes;
     private List<String> supportPhoneNumbers;
+
+    @ManyToMany(mappedBy = "restaurants", cascade = CascadeType.ALL)
+    private Set<Driver> drivers = new HashSet<>();
+
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Menu> menus = new HashSet<>();
+
 }

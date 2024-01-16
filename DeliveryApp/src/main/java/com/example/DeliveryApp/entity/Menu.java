@@ -1,6 +1,5 @@
 package com.example.DeliveryApp.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,18 +13,20 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name="USERS")
-public class User {
+@Table(name="MENUS")
+public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String email;
-    private String password;
-    private String phoneNumber;
+    private Boolean availability;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Address> addresses = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
+
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Item> items = new HashSet<>();
 
 }

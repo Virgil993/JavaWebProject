@@ -14,8 +14,7 @@ import com.example.DeliveryApp.response.userResponse.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
-import java.util.Base64;
+
 import java.util.Optional;
 
 @Service
@@ -50,25 +49,11 @@ public class UserService {
         }
         final var user=userOptional.get();
 
-        return getLoginUserResponse(request, user);
-    }
-
-    private static LoginUserResponse getLoginUserResponse(LoginUserRequest request, User user) {
         if(!user.getPassword().equals(request.password())){
             throw new WrongCredentialsException("Wrong credentials");
         }
-        SecureRandom secureRandom = new SecureRandom();
-        Base64.Encoder base64Encoder = Base64.getUrlEncoder();
-
-        byte[] randomBytes = new byte[24];
-        secureRandom.nextBytes(randomBytes);
-        String token = base64Encoder.encodeToString(randomBytes);
-
-        LoginUserResponse response = new LoginUserResponse();
-        response.setId(user.getId());
-        response.setToken(token);
-        response.setName(user.getName());
-        response.setEmail(user.getEmail());
-        return response;
+        return UserMapper.toLoginUserResponse(user);
     }
+
+
 }

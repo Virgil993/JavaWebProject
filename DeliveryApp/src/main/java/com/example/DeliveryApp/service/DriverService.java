@@ -2,12 +2,14 @@ package com.example.DeliveryApp.service;
 
 
 import com.example.DeliveryApp.entity.Driver;
+import com.example.DeliveryApp.entity.Restaurant;
 import com.example.DeliveryApp.exception.driverException.DriverAlreadyExistsException;
 import com.example.DeliveryApp.exception.driverException.DriverDoesNotExistException;
 import com.example.DeliveryApp.exception.driverException.DriverValidationException;
 import com.example.DeliveryApp.exception.driverException.WrongCredentialsException;
 import com.example.DeliveryApp.mapper.DriverMapper;
 import com.example.DeliveryApp.repository.DriverRepository;
+import com.example.DeliveryApp.repository.RestaurantRepository;
 import com.example.DeliveryApp.request.driverRequest.DriverRequest;
 import com.example.DeliveryApp.request.driverRequest.LoginDriverRequest;
 import com.example.DeliveryApp.response.driverResponse.DriverResponse;
@@ -17,12 +19,16 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DriverService {
     @Autowired
     private DriverRepository driverRepository;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     public DriverResponse register(DriverRequest request){
         if(request.getEmail().isBlank() || request.getPassword().isBlank() || request.getAge() == null || request.getName().isBlank() || request.getVehicle().isBlank() || request.getPhoneNumber().isBlank()){
@@ -37,6 +43,12 @@ public class DriverService {
             throw new DriverAlreadyExistsException("Driver already exists with this email");
         }
         Driver driver = DriverMapper.toEntity(request);
+
+        List<Restaurant> restaurants = restaurantRepository.findAll();
+        for(var i=0;i<restaurants.size();i++){
+            driver.getRestaurants().add(restaurants.get(i));
+        }
+
         driver = driverRepository.save(driver);
         return DriverMapper.toResponse(driver);
     }
@@ -51,25 +63,11 @@ public class DriverService {
         }
         final var driver=driverOptional.get();
 
-        return getLoginDriverResponse(request, driver);
-    }
-
-    private static LoginDriverResponse getLoginDriverResponse(LoginDriverRequest request, Driver driver) {
         if(!driver.getPassword().equals(request.password())){
             throw new WrongCredentialsException("Wrong credentials");
         }
-        SecureRandom secureRandom = new SecureRandom();
-        Base64.Encoder base64Encoder = Base64.getUrlEncoder();
-
-        byte[] randomBytes = new byte[24];
-        secureRandom.nextBytes(randomBytes);
-        String token = base64Encoder.encodeToString(randomBytes);
-
-        LoginDriverResponse response = new LoginDriverResponse();
-        response.setId(driver.getId());
-        response.setToken(token);
-        response.setName(driver.getName());
-        response.setEmail(driver.getEmail());
-        return response;
+        return DriverMapper.toLoginDriverResponse( driver);
     }
+
+
 }

@@ -2,7 +2,11 @@ package com.example.DeliveryApp.mapper;
 
 import com.example.DeliveryApp.entity.User;
 import com.example.DeliveryApp.request.userRequest.UserRequest;
+import com.example.DeliveryApp.response.userResponse.LoginUserResponse;
 import com.example.DeliveryApp.response.userResponse.UserResponse;
+
+import java.security.SecureRandom;
+import java.util.Base64;
 
 public class UserMapper {
 
@@ -27,5 +31,22 @@ public class UserMapper {
         user.setPhoneNumber(request.getPhoneNumber());
 
         return user;
+    }
+
+    public static LoginUserResponse toLoginUserResponse(User user) {
+
+        SecureRandom secureRandom = new SecureRandom();
+        Base64.Encoder base64Encoder = Base64.getUrlEncoder();
+
+        byte[] randomBytes = new byte[24];
+        secureRandom.nextBytes(randomBytes);
+        String token = base64Encoder.encodeToString(randomBytes);
+
+        LoginUserResponse response = new LoginUserResponse();
+        response.setId(user.getId());
+        response.setToken(token);
+        response.setName(user.getName());
+        response.setEmail(user.getEmail());
+        return response;
     }
 }
