@@ -25,6 +25,6 @@ public class Order {
     private Long addressId;
 
     @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "order_id")
     private List<OrderItem> orderItems;
 }
