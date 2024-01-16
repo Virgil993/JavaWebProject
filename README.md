@@ -87,7 +87,7 @@ Tables:
 
 9. **Get Menus By restaurantId**
 
-- Path: `/api/menus/{restaurantId}/menus`
+- Path: `/api/menus/{restaurantId}`
 - Type: `GET`
 - Params: `restaurantId: UUID`
 - Response: `[{ menuId: UUID, restaurantId: UUID,  name: String,  availability: Boolean },...]` 
