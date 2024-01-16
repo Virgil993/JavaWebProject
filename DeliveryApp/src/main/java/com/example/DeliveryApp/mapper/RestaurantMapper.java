@@ -6,10 +6,12 @@ import com.example.DeliveryApp.request.restaurantRequest.RestaurantRequest;
 import com.example.DeliveryApp.response.restaurantResponse.LoginRestaurantResponse;
 import com.example.DeliveryApp.response.restaurantResponse.RestaurantResponse;
 import com.example.DeliveryApp.response.userResponse.LoginUserResponse;
+import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 import java.util.Base64;
 
+@Component
 public class RestaurantMapper {
 
     public static RestaurantResponse toResponse(Restaurant restaurant) {

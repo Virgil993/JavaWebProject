@@ -9,10 +9,12 @@ import com.example.DeliveryApp.request.userRequest.UserRequest;
 import com.example.DeliveryApp.response.driverResponse.DriverResponse;
 import com.example.DeliveryApp.response.driverResponse.LoginDriverResponse;
 import com.example.DeliveryApp.response.userResponse.UserResponse;
+import org.springframework.stereotype.Component;
 
 import java.security.SecureRandom;
 import java.util.Base64;
 
+@Component
 public class DriverMapper {
 
     public static DriverResponse toResponse(Driver driver) {

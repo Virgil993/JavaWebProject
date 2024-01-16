@@ -1,4 +1,4 @@
-package com.example.DeliveryApp.controller;
+package com.example.DeliveryApp.handler;
 import com.example.DeliveryApp.dto.ErrorDTO;
 import com.example.DeliveryApp.exception.driverException.DriverAlreadyExistsException;
 import com.example.DeliveryApp.exception.driverException.DriverDoesNotExistException;

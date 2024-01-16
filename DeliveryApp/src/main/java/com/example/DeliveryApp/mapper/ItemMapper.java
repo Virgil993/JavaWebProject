@@ -5,7 +5,9 @@ import com.example.DeliveryApp.entity.Menu;
 import com.example.DeliveryApp.entity.Restaurant;
 import com.example.DeliveryApp.request.itemRequest.ItemRequest;
 import com.example.DeliveryApp.response.itemResponse.ItemResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItemMapper {
 
     public static ItemResponse toResponse(Item item) {

@@ -4,7 +4,9 @@ import com.example.DeliveryApp.entity.Menu;
 import com.example.DeliveryApp.entity.Restaurant;
 import com.example.DeliveryApp.request.menuRequest.MenuRequest;
 import com.example.DeliveryApp.response.menuResponse.MenuResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MenuMapper {
 
     public static MenuResponse toResponse(Menu menu) {

@@ -5,7 +5,9 @@ import com.example.DeliveryApp.entity.Restaurant;
 import com.example.DeliveryApp.entity.User;
 import com.example.DeliveryApp.request.addressRequest.AddressRequest;
 import com.example.DeliveryApp.response.addressResponse.AddressResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AddressMapper {
     public static AddressResponse toResponse(Address address) {
         AddressResponse response = new AddressResponse();
