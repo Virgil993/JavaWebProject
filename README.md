@@ -133,28 +133,28 @@ Tables:
 - Path: `/api/order/`
 - Type: `POST`
 - Body: `{ userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string}`
-- Response: `{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string}`
+- Response: `{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID}`
 
 16. **Get Orders By userId**
 
 - Path: `/api/order/user/{userId}`
 - Type: `GET`
 - Params: `userId: UUID`
-- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string},...]` 
+- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID},...]` 
 
 17. **Get Orders By restaurantId**
 
 - Path: `/api/order/restaurant/{restaurantId}`
 - Type: `GET`
 - Params: `restaurantId: UUID`
-- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string},...]` 
+- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID},...]` 
 
 18. **Get Orders By driverId**
 
 - Path: `/api/order/driver/{driverId}`
 - Type: `GET`
 - Params: `driverId: UUID`
-- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string},...]` 
+- Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID },...]` 
 
 19. **Delete Order**
 
@@ -163,20 +163,12 @@ Tables:
 - Params: `orderId (UUID)`
 - Response: `{ message: String }`
 
-20. **Add item to Order**
-
-- Path: `api/order/item/association`
-- Type: `POST`
-- Params: `orderId (UUID)`
-- Body: `{ orderId: UUID, itemId: UUID}`
-- Response: `{ orderItemAssociationId: UUID,orderId: UUID, itemId: UUID}`
-
-21. **Remove item from Order**
+21. **Update Order**
 
 - Path: `api/order/item/association`
 - Type: `DELETE`
-- Body: `{ orderId: UUID, itemId: UUID}`
-- Response: `{ message: String }`
+- Body: `{ userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID}`
+- Response: `{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID}`
 
 22. **Add driver to restaurant**
 
