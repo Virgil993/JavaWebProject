@@ -191,7 +191,7 @@ Tables:
 - Path: `api/restaurant/driver/association`
 - Type: `POST`
 - Body: `{ restaurantId: UUID, driverId: UUID}`
-- Response: `{ restaurantDriverAssociationId: UUID, restaurantId: UUID, driverId: UUID}`
+- Response: `{ message: String}`
 
 24. **Remove driver from restaurant**
 
