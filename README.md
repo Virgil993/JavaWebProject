@@ -32,69 +32,69 @@ Tables:
 
 1. **Register User** 
 
-- Path: `/api/user/register`
+- Path: `/api/users/register`
 - Type: `POST`
 - Body: `{name: String, email: String, password:String, phoneNumber:String}`
 - Response: `{ userId: UUID, name: String, email: String, phoneNumber:String }`
 
 2. **Login User**
 
-- Path: `/api/user/login`
+- Path: `/api/users/login`
 - Type: `POST`
 - Body: `{ email: String, password:String}`
 - Response: `{ token: String, userId: UUID, name: String, email: String}`
 
 3. **Register Driver**
 
-- Path: `/api/driver/register`
+- Path: `/api/drivers/register`
 - Type: `POST`
 - Body: `{name: String, email: String, password:String, phoneNumber:String, vehicle: String, age: Int, deliveryExperience: String }`
 - Response: `{ driverId: UUID, name: String, email: String, phoneNumber:String, vehicle: String, age: Int, deliveryExperience: String }`
 
 4. **Login Driver**
 
-- Path: `/api/driver/login`
+- Path: `/api/drivers/login`
 - Type: `POST`
 - Body: `{ email: String, password:String}`
 - Response: `{ token: String, userId: UUID, name: String, email: String}`
 
 5. **Register Restaurant**
 
-- Path: `/api/restaurant/register`
+- Path: `/api/restaurants/register`
 - Type: `POST`
 - Body: `{name: String, email: String, password:String, priceRating: Int, Rating: Int, FoodType:List<String>, supportPhoneNumbers: List<String>}`
 - Response: `{ restaurantId: UUID, name: String, email: String }`
 
 6. **Login Restaurant**
 
-- Path: `/api/restaurant/login`
+- Path: `/api/restaurants/login`
 - Type: `POST`
 - Body: `{ email: String, password: String}`
 - Response: `{ token: String, restaurantId: UUID,  name: String, email: String }`
 
 7. **Get Restaurants**
 
-- Path: `/api/restaurant`
+- Path: `/api/restaurants`
 - Type: `GET`
 - Response: `[{ restaurantId: UUID,  name: String, priceRating: Int, Rating: Int, FoodType:List<String>, supportPhoneNumbers: List<String> },...]` 
     
 8. **Create Menu**
 
-- Path: `/api/menu/`
+- Path: `/api/menus/`
 - Type: `POST`
 - Body: `{ restaurantId: UUID, name: String, availability: Boolean}`
 - Response: `{ menuId: UUID, restaurantId: UUID,  name: String,  availability: Boolean}`
 
 9. **Get Menus By restaurantId**
 
-- Path: `/api/restaurant/{restaurantId}/menus`
+- Path: `/api/menus/{restaurantId}/menus`
 - Type: `GET`
 - Params: `restaurantId: UUID`
 - Response: `[{ menuId: UUID, restaurantId: UUID,  name: String,  availability: Boolean },...]` 
 
 10. **Update Menu Availability**
 
-- Path: `/api/menu/{menuId}/availability`
+- Path: `/api/menus/{menuId}/availability`
 - Type: `PUT`
 - Params: `menuId (UUID)`
 - Body: `{ availability: Boolean}`
@@ -102,7 +102,7 @@ Tables:
 
 11. **Delete Menu**
 
-- Path: `/api/menu/{menuId}`
+- Path: `/api/menus/{menuId}`
 - Type: `DELETE`
 - Params: `menuId (UUID)`
 - Response: `{ message: String }`
