@@ -156,22 +156,14 @@ Tables:
 - Params: `driverId: UUID`
 - Response: `[{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string},...]` 
 
-19. **Update Order status**
-
-- Path: `/api/order/{orderId}/status`
-- Type: `PUT`
-- Params: `orderId (UUID)`
-- Body: `{ status: String}`
-- Response: `{ orderId: UUID, userId: UUID, restaurantId:UUID, driverId:UUID, addressId: UUID, status: string}`
-
-20. **Delete Order**
+19. **Delete Order**
 
 - Path: `/api/order/{orderId}`
 - Type: `DELETE`
 - Params: `orderId (UUID)`
 - Response: `{ message: String }`
 
-21. **Add item to Order**
+20. **Add item to Order**
 
 - Path: `api/order/item/association`
 - Type: `POST`
@@ -179,49 +171,49 @@ Tables:
 - Body: `{ orderId: UUID, itemId: UUID}`
 - Response: `{ orderItemAssociationId: UUID,orderId: UUID, itemId: UUID}`
 
-22. **Remove item from Order**
+21. **Remove item from Order**
 
 - Path: `api/order/item/association`
 - Type: `DELETE`
 - Body: `{ orderId: UUID, itemId: UUID}`
 - Response: `{ message: String }`
 
-23. **Add driver to restaurant**
+22. **Add driver to restaurant**
 
 - Path: `api/restaurant/driver/association`
 - Type: `POST`
 - Body: `{ restaurantId: UUID, driverId: UUID}`
 - Response: `{ message: String}`
 
-24. **Remove driver from restaurant**
+23. **Remove driver from restaurant**
 
 - Path: `api/restaurant/driver/association`
 - Type: `DELETE`
 - Body: `{ restaurantId: UUID, driverId: UUID}`
 - Response: `{ message: String }`
 
-25. **Add address for user**
+24. **Add address for user**
 
 - Path: `api/address/`
 - Type: `POST`
 - Body: `{ userId: UUID, city: String,street: String, house: String, details: String}`
 - Response: `{ addressId: UUID, userId: UUID, city: String,street: String, house: String, details: String}`
 
-26. **Get all addresses by userId**
+25. **Get all addresses by userId**
 
 - Path: `/api/address/all/{userId}`
 - Type: `GET`
 - Params: `userId: UUID`
 - Response: `[{ addressId: UUID, userId: UUID, city: String,street: String, house: String, details: String},...]` 
 
-27. **Get single address**
+26. **Get single address**
 
 - Path: `/api/address/single/{addressId}`
 - Type: `GET`
 - Params: `addressId: UUID`
 - Response: `{ addressId: UUID, userId: UUID, city: String,street: String, house: String, details: String}` 
 
-28. **Delete address**
+27. **Delete address**
 
 - Path: `api/address/{addressId}`
 - Type: `DELETE`
